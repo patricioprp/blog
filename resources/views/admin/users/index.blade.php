@@ -24,7 +24,9 @@
       <span class="label label-info">{{$user->type}}</span>
     @endif
   </th>
-    <th><a href="" class="btn btn-danger"></a><a href="" class="btn btn-warning"></a></th>
+    <th><a href="{{ route('admin.users.destroy',$user->id) }}"  onclick="return confirm('Desea eliminar a {{$user->name}}')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle"></span></a>
+        <a href="{{ route('users.edit',$user->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench"></span></a>
+    </th>
   </tr>
   @endforeach
   </tbody>
