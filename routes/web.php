@@ -29,11 +29,13 @@ Route::group(['prefix' => 'articles'] , function(){
     'uses' => 'TestController@view',
     "as" => 'articlesView'
   ]);
-
   /*
   Route::get('view/{articles?}', function($article = "vacio"){
     echo $article;
   });
   */
+});
+Route::group(['prefix' => 'admin'], function(){
 
+   Route::resource('users','UserController');
 });

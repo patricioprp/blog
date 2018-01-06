@@ -22,7 +22,14 @@
     @include('admin.template.partials.nav')
 
         <section>
-    @yield('content','default')
+
+    <div class="panel panel-default">
+      <div class="panel-heading">@yield('content','default')</div>
+      <div class="panel-body">
+        @include('flash::message')
+@yield('cuerpo')
+      </div>
+    </div>
     </section>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

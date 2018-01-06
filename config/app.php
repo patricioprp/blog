@@ -181,6 +181,8 @@ return [
         */
 
         Barryvdh\Debugbar\ServiceProvider::class,
+        'Collective\Html\HtmlServiceProvider',
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
@@ -234,7 +236,8 @@ return [
         */
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
     ],
 
 ];
