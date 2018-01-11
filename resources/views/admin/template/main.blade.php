@@ -27,7 +27,8 @@
       <div class="panel-heading">@yield('content','default')</div>
       <div class="panel-body">
         @include('flash::message')
-@yield('cuerpo')
+        @include('admin.template.partials.errors')
+        @yield('cuerpo')
       </div>
     </div>
     </section>
