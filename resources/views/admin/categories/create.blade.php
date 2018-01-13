@@ -1,6 +1,7 @@
 @extends('admin.template.main')
 @section('title','Crear Categoria')
 @section('content','Crear Categoria')
+@section('categoria','active')
 @section('cuerpo')
 
   {!! Form::open(['route'=>'categories.store','method'=>'POST']) !!}
