@@ -37,7 +37,7 @@ Route::group(['prefix' => 'articles'] , function(){
 });
 
 //RUTAS DEFINITIVAS DE LA APLICACION
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
 
    Route::resource('users','UserController');
    Route::get('users/{id}/destroy',[
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin'], function(){
      'as' =>'admin.users.destroy'
    ]);
 });
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
 
    Route::resource('categories','CategoriesController');
    Route::get('categories/{id}/destroy',[
@@ -53,3 +53,7 @@ Route::group(['prefix' => 'admin'], function(){
      'as' =>'admin.categories.destroy'
    ]);
 });
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');

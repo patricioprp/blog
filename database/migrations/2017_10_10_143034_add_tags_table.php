@@ -23,8 +23,8 @@ class AddTagsTable extends Migration
           $table->integer('article_id')->unsigned();
           $table->integer('tag_id')->unsigned();
 
-         $table->foreign('article_id')->references('id')->on('articles');
-         $table->foreign('tag_id')->references('id')->on('tags');
+         $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+         $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
 
           $table->timestamps();
         });
@@ -37,6 +37,7 @@ class AddTagsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('article_tags');
         Schema::dropIfExists('tags');
     }
 }
