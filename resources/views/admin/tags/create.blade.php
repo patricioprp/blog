@@ -3,6 +3,7 @@
 @section('content','Crear Tags')
 @section('tag','active')
 @section('cuerpo')
+
   {!! Form::open(['route'=>'tags.store','method'=>'POST']) !!}
   <div class="form-group">
     {!! Form::label('name','NOMBRE') !!}

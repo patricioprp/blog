@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TagRequest;
 use App\Tag;
 
-class TagsController extends Controller
+
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class TagsController extends Controller
      */
     public function index()
     {
-        return view('admin.tags.index');
+        $tags= tag::orderBy('id','DESC')->paginate(5);
+        return view('admin.tags.index')->with('tags',$tags);
     }
 
     /**
@@ -34,13 +35,15 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request)
+    public function store(Request $request)
     {
-        /*$tag = new Tag($request->all());*/
-        dd($request);
-        /*$tag->save();
-        flash("Se creo el Tag " . $Tag->name . " correctamente!")->success();
-        return redirect(route('tags.index'));*/
+       // dd($request);
+
+        $tag = new Tag();
+        $tag->name=$request->name;
+        $tag->save();
+        flash("Se creo el Tag " . $tag->name . " correctamente!")->success();
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -62,7 +65,7 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.tags.edit');
+        //
     }
 
     /**

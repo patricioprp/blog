@@ -37,6 +37,7 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+       // dd($request);
         $category= new Category($request->all());
         $category->save();
         flash("Se creo la Cateoria " . $category->name . " correctamente!")->success();
