@@ -19,7 +19,7 @@
         <li class="@yield('categoria')"><a href="{{route('categories.index')}}">Categorias</a>
         <li><a href="#">Articulos</a></li>
         <li><a href="#">Imagenes</a></li>
-        <li><a href="#">Tags</a></li>
+        <li class="@yield('tag')"><a href="{{route('tags.index')}}">Tags</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Pagina Principal</a></li>
