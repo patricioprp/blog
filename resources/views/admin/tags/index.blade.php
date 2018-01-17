@@ -3,7 +3,6 @@
 @section('content','Listar Tags')
 @section('tag','active')
 @section('cuerpo')
-@endsection
 
   <a href="{{ route('tags.create') }}" class="btn btn-info">Registrar Nuevo Tag</a>
   <table class="table table-striped">
@@ -26,4 +25,3 @@
   </table>
   {!!$tags->render()!!}
 @endsection
->>>>>>> 80ed7b9676aace6a73f1d8a29361195d0921d9ce
