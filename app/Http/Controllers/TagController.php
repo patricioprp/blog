@@ -41,6 +41,9 @@ class TagController extends Controller
 
         $tag = new Tag();
         $tag->name=$request->name;
+      //$tag= new Tag($request->all());
+      //Illuminate \ Database \ Eloquent \ MassAssignmentException _token
+
         $tag->save();
         flash("Se creo el Tag " . $tag->name . " correctamente!")->success();
         return redirect(route('tags.index'));
@@ -65,7 +68,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('admin.tags.edit')->with('tag',$tag);
     }
 
     /**
@@ -77,7 +81,12 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $tag=Tag::find($id);
+      $tag->name=$request->name;
+    //  $tag->fill($request->all());
+      $tag->save();
+      flash("Se actualizo el Tag  " . $tag->name . " correctamente!")->warning();
+       return redirect(route('tags.index'));
     }
 
     /**
@@ -88,6 +97,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->delete();
+        flash("Se elimino el Tag  " . $tag->name . " correctamente!")->error();
+         return redirect(route('tags.index'));
     }
 }
