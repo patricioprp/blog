@@ -3,21 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TagRequest;
-use App\Tag;
 
-
-class TagController extends Controller
+class ArticlesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $tags= tag::search($request->name)->orderBy('id','DESC')->paginate(5);
-        return view('admin.tags.index')->with('tags',$tags);
+        
     }
 
     /**
@@ -27,7 +23,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        return view('admin.articles.create');
     }
 
     /**
@@ -36,12 +32,9 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagRequest $request)
+    public function store(Request $request)
     {
-        $tag = new Tag($request->all());
-        $tag->save();
-        flash("Se creo el Tag " . $tag->name . " correctamente!")->success();
-        return redirect(route('tags.index'));
+        //
     }
 
     /**
@@ -63,8 +56,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::find($id);
-        return view('admin.tags.edit')->with('tag',$tag);
+        //
     }
 
     /**
@@ -76,11 +68,7 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Tag::find($id);
-        $tag->fill($request->all());
-        $tag->save();
-        flash("Se actualizo el Tag  " . $tag->name . " correctamente!")->warning();
-        return redirect(route('tags.index'));
+        //
     }
 
     /**
@@ -91,9 +79,6 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::find($id);
-        $tag->delete();
-        flash("Se elimino el Tag  " . $tag->name . " correctamente!")->error();
-        return redirect(route('tags.index'));
-}
+        //
+    }
 }

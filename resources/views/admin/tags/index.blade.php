@@ -5,6 +5,22 @@
 @section('cuerpo')
 
   <a href="{{ route('tags.create') }}" class="btn btn-info">Registrar Nuevo Tag</a>
+
+      {{-- Buscador de tags --}}
+    {!! Form::open(['route' => 'tags.index', 'method' => 'GET', 'autocomplete' => 'off',
+        'class' => 'navbar-form pull-right', 'id' => 'formSearch']) !!}
+        <div class="input-group">
+            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Buscar']) !!}
+
+            <div class="input-group-btn">
+                <button type="submit" form="formSearch" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+{!! Form::close() !!}
+
+
   <table class="table table-striped">
     <thead>
       <th>ID</th>
