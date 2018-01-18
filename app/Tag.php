@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     protected $table = "tags";
-    protected $filalable = ['name'];
+    protected $fillable = ['name'];
 
-    public function tags()
+    public function articles()
     {
-      return $this->belongsToMany('App\Tag');
+      return $this->belongsToMany('App\Article');
     }
 }
