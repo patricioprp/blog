@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
+use App\Tag;
 
 class ArticlesController extends Controller
 {
@@ -13,7 +15,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -23,7 +25,11 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('admin.articles.create');
+        $categories = Category::orderBy('name','ASC')->get();
+        $tags = Tag::orderBy('name','ASC')->get();
+        return view('admin.articles.create')
+        ->with('categories',$categories)
+        ->with('tags',$tags);
     }
 
     /**
