@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Auth\GenericUser;
 use App\Category;
 use App\Tag;
 
@@ -25,8 +26,8 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name','ASC')->get();
-        $tags = Tag::orderBy('name','ASC')->get();
+        $categories = Category::orderBy('name','ASC')->pluck('name','id');
+        $tags = Tag::orderBy('name','ASC')->pluck('name','id');
         return view('admin.articles.create')
         ->with('categories',$categories)
         ->with('tags',$tags);
@@ -40,7 +41,11 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Manipulacion de Imagenes
+        $file = $request->file('image');
+        $name = 'blog_' . time() . '.' . $file->getClientOriginalExtension();
+        $path = public_path() . '/images/articles/';
+        $file->move($path, $name);
     }
 
     /**
