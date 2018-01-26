@@ -16,7 +16,7 @@ public function sluggable()
 }*/
 
     protected $table = "articles";
-    protected $fillable = ['title','category','category_id','user_id'];
+    protected $fillable = ['title','content','category_id','user_id'];
 
     public function category()
     {
