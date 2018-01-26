@@ -41,7 +41,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
       if($request->file('image')){//validamos que lo q se intente guardar sean imagenes
         //Manipulacion de Imagenes

@@ -38,8 +38,10 @@
             max_selected_options: 3,
         });
         $('.select-category').chosen({
-
+           placeholder_text_single: "Seleccione una Categoria..."
         });
-
+        $('.textarea-content').trumbowyg({
+          
+        });
     </script>
 @endsection
