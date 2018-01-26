@@ -32,12 +32,14 @@
 
 @section('js')
     <script>
-        $(".select-tag").chosen({
+        $('.select-tag').chosen({
             disable_search_threshold: 3,
-            placeholder_text_multiple: 'Seleccione un máximo de tres tasgs',
+            placeholder_text_multiple: "Seleccione un máximo de tres tasgs",
             max_selected_options: 3,
         });
-        $(".select-category").chosen({});
+        $('.select-category').chosen({
+
+        });
 
     </script>
 @endsection
