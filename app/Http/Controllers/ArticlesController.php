@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\GenericUser;
 use App\Category;
 use App\Tag;
+use App\Article;
+use App\Image;
 
 class ArticlesController extends Controller
 {
@@ -16,7 +18,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-
+      return view('admin.articles.index');
     }
 
     /**
@@ -41,11 +43,30 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+      if($request->file('image')){//validamos que lo q se intente guardar sean imagenes
         //Manipulacion de Imagenes
         $file = $request->file('image');
         $name = 'blog_' . time() . '.' . $file->getClientOriginalExtension();
         $path = public_path() . '/images/articles/';
         $file->move($path, $name);
+      }
+      $article = new Article($request->all());
+      $article->user_id = \Auth::user()->id;
+      $article->save();
+
+      //antes de guardar la tabla pivot tag debemos antes guardar el articulo, porque necesitamos las llaves foraneas
+      $article->tags()->sync($request->tags);
+
+
+      $image = new Image();
+      $image->name = $image;
+      $image->article()->associate($article);// $image->article_id = $article->id; se usa associate para evitar coliciones en el caso de que varias personas esten creando en ese momento articulos con los mismos id
+      $image->save();
+
+
+
+        flash("El artículo '$article->title' ha sido creado con éxito.")->success()->important();
+        return redirect()->route('articles.index');
     }
 
     /**

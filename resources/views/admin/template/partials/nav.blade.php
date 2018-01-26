@@ -17,7 +17,7 @@
         <li class=""><a href="#">Inicio</a></li>
         <li class="@yield('usuario')"><a href="{{route('users.index')}}">Usuarios</a></li>
         <li class="@yield('categoria')"><a href="{{route('categories.index')}}">Categorias</a>
-        <li class="@yield('categoria')"><a href="{{route('articles.index')}}">Articulos</a></li>
+        <li class="@yield('articulo')"><a href="{{route('articles.index')}}">Articulos</a></li>
         <li><a href="#">Imagenes</a></li>
         <li class="@yield('tag')"><a href="{{route('tags.index')}}">Tags</a></li>
       </ul>

@@ -3,7 +3,7 @@
 @section('content','Crear Articulo')
 @section('articulo','active')
 @section('cuerpo')
-    {!! Form::open(['route'=>'articles.store','method'=>'POST','files'=>'true']) !!}
+    {!! Form::open(['route'=>'articles.store','method'=>'POST','autocomplete'=>'off','files'=>'true']) !!}
     <div class="form-group">
       {!! Form::label('title','Titulo') !!}
       {!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo del articulo...','required'])!!}
@@ -17,9 +17,9 @@
       {!! Form::textarea('content',null,['class'=>'form-control'])!!}
     </div>
     <div class="form-group">
-      {!! Form::label('tag_id','Tag')!!}
-      {!! Form::select('tag_id',$tags,null,['class'=>'form-control','multiple','required'])!!}
-    </div>
+        {!! Form::label('tags', 'Tags') !!}
+        {!! Form::select('tags[]', $tags, null, ['class' => 'form-control select-tag', 'multiple', 'required']) !!}
+
     <div class="form-group">
       {!! Form::label('image','Imagen')!!}
       {!! Form::file('image')!!}

@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 @section('title','Listado Categorias')
-@section('content','Listado de Categoeias')
+@section('content','Listado de Categorias')
 @section('categoria','active')
 @section('cuerpo')
   <a href="{{ route('categories.create') }}" class="btn btn-info">Registrar Nueva Categoria</a>
