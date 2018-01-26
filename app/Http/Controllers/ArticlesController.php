@@ -59,7 +59,7 @@ class ArticlesController extends Controller
 
 
       $image = new Image();
-      $image->name = $image;
+      $image->name = $name;
       $image->article()->associate($article);// $image->article_id = $article->id; se usa associate para evitar coliciones en el caso de que varias personas esten creando en ese momento articulos con los mismos id
       $image->save();
 

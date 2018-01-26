@@ -13,8 +13,9 @@
       {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Seleccione una Opcion','required'])!!}
     </div>
     <div class="form-group">
-      {!! Form::label('content','Contenido')!!}
-      {!! Form::textarea('content',null,['class'=>'form-control'])!!}
+        {!! Form::label('content', 'Contenido') !!}
+        {!! Form::textarea('content', null, ['class' => 'form-control textarea-content',
+            'placeholder' => 'Contenido del artículo', 'required']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('tags', 'Tags') !!}
