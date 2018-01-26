@@ -10,11 +10,11 @@
     </div>
     <div class="form-group">
       {!! Form::label('category_id','Categoria') !!}
-      {!! Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Seleccione una Opcion','required'])!!}
+      {!! Form::select('category_id',$categories,null,['class'=>'form-control select-category','placeholder'=>'Seleccione una Opcion','required'])!!}
     </div>
         <div class="form-group">
             {!! Form::label('content', 'Contenido') !!}
-            {!! Form::textarea('content',null,['class' => 'form-control','placeholder' => 'Contenido del artículo','required'])!!}
+            {!! Form::textarea('content',null,['class' => 'form-control textarea-content','placeholder' => 'Contenido del artículo','required'])!!}
 </div>
     <div class="form-group">
         {!! Form::label('tags', 'Tags') !!}
@@ -28,4 +28,16 @@
       {!! Form::submit('Agregar Articulo',['class'=>'btn btn-primary'])!!}
     </div>
     {!! Form::close() !!}
+@endsection
+
+@section('js')
+    <script>
+        $(".select-tag").chosen({
+            disable_search_threshold: 3,
+            placeholder_text_multiple: 'Seleccione un máximo de tres tasgs',
+            max_selected_options: 3,
+        });
+        $(".select-category").chosen({});
+
+    </script>
 @endsection
