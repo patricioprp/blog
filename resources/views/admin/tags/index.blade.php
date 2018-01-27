@@ -19,7 +19,7 @@
             </div>
         </div>
 {!! Form::close() !!}
-
+{{-- Fin del Buscador de Tags --}}
 
   <table class="table table-striped">
     <thead>
@@ -39,5 +39,7 @@
       @endforeach
     </tbody>
   </table>
+    <div class="text-center">
   {!!$tags->render()!!}
+</div>
 @endsection

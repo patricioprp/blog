@@ -8,6 +8,7 @@ use App\Category;
 use App\Tag;
 use App\Article;
 use App\Image;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -16,9 +17,14 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      return view('admin.articles.index');
+      $articles = Article::search($request->title)->orderBy('id','DESC')->paginate(5);
+      $articles->each(function($articles){
+      $articles->category;
+      $articles->user;
+      });
+      return view('admin.articles.index')->with('articles',$articles);
     }
 
     /**
@@ -88,7 +94,18 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+         $article = Article::find($id);
+         $article->category;
+         $article->tags;
+         $my_tags = $article->tags->pluck('id')->ToArray();
+         $categories = Category::orderBy('name','DESC')->pluck('name','id');
+         $tags = Tag::orderBy('name','DESC')->pluck('name','id');
+        return view('admin.articles.edit')
+        ->with('tags',$tags)
+        ->with('categories',$categories)
+        ->with('article',$article)
+        ->with('my_tags',$my_tags);
+
     }
 
     /**
@@ -100,7 +117,12 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->fill($request->all());
+        $article->save();
+        $article->tags()->sync($request->tags);
+        flash("El artículo se actualizó con éxito.")->success()->important();
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -111,6 +133,9 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        flash("El Artículo '$article->title' ha sido eliminado con éxito.")->success()->important();
+        return redirect()->route('articles.index');
     }
 }
