@@ -14,15 +14,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       @if(Auth::User())
       <ul class="nav navbar-nav">
-        <li class=""><a href="#">Inicio</a></li>
+        <li class=""><a href="{{ url('/') }}">Inicio</a></li>
         <li class="@yield('usuario')"><a href="{{route('users.index')}}">Usuarios</a></li>
         <li class="@yield('categoria')"><a href="{{route('categories.index')}}">Categorias</a>
         <li class="@yield('articulo')"><a href="{{route('articles.index')}}">Articulos</a></li>
-        <li><a href="#">Imagenes</a></li>
+        <li class="@yield('imagen')"><a href="{{route('admin.images.index')}}">Imagenes</a></li>
         <li class="@yield('tag')"><a href="{{route('tags.index')}}">Tags</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Pagina Principal</a></li>
+        <li><a href="{{ url('/') }}">Pagina Principal</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::User()->name}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
