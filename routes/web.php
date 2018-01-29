@@ -44,37 +44,28 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
      'uses' => 'UserController@destroy',
      'as' =>'admin.users.destroy'
    ]);
-});
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
-
-   Route::resource('categories','CategoriesController');
-   Route::get('categories/{id}/destroy',[
+      Route::resource('categories','CategoriesController');
+      Route::get('categories/{id}/destroy',[
      'uses' => 'CategoriesController@destroy',
      'as' =>'admin.categories.destroy'
    ]);
-});
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
-
-   Route::resource('articles','ArticlesController');
-   Route::get('articles/{id}/destroy',[
+      Route::resource('articles','ArticlesController');
+      Route::get('articles/{id}/destroy',[
      'uses' => 'ArticlesController@destroy',
      'as' =>'admin.articles.destroy'
    ]);
-   Route::get('images',[
+      Route::get('images',[
      'uses' => 'ImagesController@index',
      'as' => 'admin.images.index'
    ]);
-});
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
-   Route::resource('tags','TagController');
-   Route::get('tags/{id}/destroy',[
+      Route::resource('tags','TagController');
+      Route::get('tags/{id}/destroy',[
      'uses' => 'TagController@destroy',
      'as' =>'admin.tags.destroy'
    ]);
+     Route::get('/', 'HomeController@index')->name('home');
 });
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
-  Route::resource('articles','ArticlesController');
-});
+
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+

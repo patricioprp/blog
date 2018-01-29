@@ -15,4 +15,5 @@
       </div>
     @endforeach
   </div>
+  {{$images->render()}}
 @endsection
