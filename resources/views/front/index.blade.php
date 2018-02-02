@@ -1,1 +1,1 @@
-este es el index del front
+hola este es un cambio en el front del index

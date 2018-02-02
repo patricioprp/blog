@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 /*Route::get('hola', function(){
   return view('test/index');
 });*/
@@ -35,8 +33,14 @@ Route::group(['prefix' => 'articles'] , function(){
   });
   */
 });
+//Rutas del frontend
 
-//RUTAS DEFINITIVAS DE LA APLICACION
+
+Route::get('/',['as'=>'front.index', function () {
+    return view('front.index');
+}]);
+
+//RUTAS DEFINITIVAS DE LA APLICACION del panel de administracion
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
 
    Route::resource('users','UserController');
